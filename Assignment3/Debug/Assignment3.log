@@ -1,6 +1,0 @@
-﻿  graphm.cpp
-c:\users\amana\onedrive\documents\visual studio 2015\projects\assignment3\assignment3\graphm.cpp(245): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
-  graphl.cpp
-c:\users\amana\onedrive\documents\visual studio 2015\projects\assignment3\assignment3\graphl.cpp(177): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
-  Assignment3.cpp
-  Generating Code...
