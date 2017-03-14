@@ -149,8 +149,13 @@
     <ClInclude Include="BSTree.h" />
     <ClInclude Include="Classic.h" />
     <ClInclude Include="Comedy.h" />
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="Drama.h" />
+    <ClInclude Include="HashedCustomer.h" />
+    <ClInclude Include="HashTable.h" />
+    <ClInclude Include="History.h" />
     <ClInclude Include="Movie.h" />
+    <ClInclude Include="MovieFactory.h" />
     <ClInclude Include="Return.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Store.h" />
@@ -164,8 +169,13 @@
     <ClCompile Include="BSTree.cpp" />
     <ClCompile Include="Classic.cpp" />
     <ClCompile Include="Comedy.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Drama.cpp" />
+    <ClCompile Include="HashedCustomer.cpp" />
+    <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="History.cpp" />
     <ClCompile Include="Movie.cpp" />
+    <ClCompile Include="MovieFactory.cpp" />
     <ClCompile Include="Return.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -5,10 +5,12 @@
 #pragma once
 #include "Transaction.h"
 
-class Return: Transaction
+class Return: public Transaction
 {
 public:
 	Return();
 	~Return();
+
+	virtual void processTrans(string line, BSTree &movieTree, HashTable &customerTable);
 };
 

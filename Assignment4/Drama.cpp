@@ -8,11 +8,28 @@ Drama::Drama(string title, string director, int year)
 	setYear(year);
 }
 
+Drama::Drama(string title, string director)
+{
+	setTitle(title);
+	setDirector(director);
+}
+
 Drama::~Drama()
 {
 }
 
-bool Drama::operator>(const Drama &rhs) const
+bool Drama::operator==(const Movie &rhs) const
+{
+	return this->getTitle() == rhs.getTitle() &&
+		   this->getDirector() == rhs.getDirector();
+}
+
+bool Drama::operator!=(const Movie &rhs) const
+{
+	return !(*this == rhs);
+}
+
+bool Drama::operator>(const Movie &rhs) const
 {
 	// Sorted by director then title
 	if (this->getDirector() == rhs.getDirector())
@@ -22,7 +39,7 @@ bool Drama::operator>(const Drama &rhs) const
 	return this->getDirector() > rhs.getDirector();
 }
 
-bool Drama::operator<(const Drama &rhs) const
+bool Drama::operator<(const Movie &rhs) const
 {
 	// Sorted by director then title
 	if (this->getDirector() == rhs.getDirector())
@@ -32,7 +49,7 @@ bool Drama::operator<(const Drama &rhs) const
 	return this->getDirector() < rhs.getDirector();
 }
 
-Drama& Drama::operator=(const Drama &rhs)
+Drama& Drama::operator=(const Movie &rhs)
 {
 	if (*this == rhs)
 	{

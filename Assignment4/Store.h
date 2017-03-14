@@ -6,6 +6,20 @@
 */
 #pragma once
 #include <iostream>
+#include <fstream>
+
+#include "BSTree.h"
+#include "HashTable.h"
+#include "MovieFactory.h"
+#include "Movie.h"
+#include "Drama.h"
+#include "Comedy.h"
+#include "Classic.h"
+
+#include "TransactionFactory.h"
+#include "Transaction.h"
+#include "Borrow.h"
+#include "Return.h"
 
 using namespace std;
 
@@ -18,5 +32,10 @@ public:
 	void readCommands(ifstream &file); // Read in data4commands for testing
 	void readCustomers(ifstream &file); // Read in data4customers for adding customers
 	void readMovies(ifstream &file); // Read in data4movies for adding movies
+
+	void inventory();
+private:
+	BSTree dramaTree, comedyTree, classicTree; // Trees for each type of movie
+	HashTable customerTable;
 };
 

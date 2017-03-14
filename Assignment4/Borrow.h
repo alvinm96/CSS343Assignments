@@ -10,5 +10,7 @@ class Borrow: public Transaction
 public:
 	Borrow();
 	~Borrow();
+
+	virtual void processTrans(string line, BSTree &movieTree, HashTable &customerTable);
 };
 

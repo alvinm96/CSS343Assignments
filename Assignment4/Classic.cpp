@@ -23,6 +23,24 @@ string Classic::getActor() const
 	return actors[0];
 }
 
+const vector<string> Classic::getActors() const
+{
+	return actors;
+}
+
+// TODO: Improve algorithm
+bool Classic::containsActor(string name) const
+{
+	for (int i = 0; i < actors.size(); i++)
+	{
+		if (name == actors[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 void Classic::addActor(string name)
 {
 	actors.push_back(name);
@@ -38,42 +56,68 @@ void Classic::setMonth(int month)
 	this->month = month;
 }
 
-bool Classic::operator>(const Classic &rhs) const
+bool Classic::operator==(const Movie &rhs) const
 {
+	const Classic &temp = static_cast<const Classic &>(rhs);
+	bool containsAtLeastOneActor = false;
+
+	// Check if at least one of the actors is in the movie, same month, same year
+	for (int i = 0; i < actors.size(); i++)
+	{
+		if (temp.containsActor(actors[i]))
+		{
+			containsAtLeastOneActor = true;
+		}
+	}
+	return this->getMonth() == temp.getMonth() &&
+		   this->getYear() == temp.getYear();
+}
+
+bool Classic::operator!=(const Movie &rhs) const
+{
+	return !(*this == rhs);
+}
+
+bool Classic::operator>(const Movie &rhs) const
+{
+	const Classic &temp = static_cast<const Classic &>(rhs);
 	// Sorted by release date then major actor
 	// check year -> check month ->check actor
 	if (this->getYear() == rhs.getYear())
 	{
-		if (this->getMonth() == rhs.getMonth())
+		if (this->getMonth() == temp.getMonth())
 		{
-			return this->getActor() > rhs.getActor();
+			return this->getActor() > temp.getActor();
 		}
 		else {
-			return this->getMonth() > rhs.getMonth();
+			return this->getMonth() > temp.getMonth();
 		}
 	}
 	return this->getYear() > rhs.getYear(); // Year not the same
 }
 
-bool Classic::operator<(const Classic &rhs) const
+bool Classic::operator<(const Movie &rhs) const
 {
+	const Classic &temp = static_cast<const Classic &>(rhs);
 	// Sorted by release date then major actor
 	// check year -> check month ->check actor
 	if (this->getYear() == rhs.getYear())
 	{
-		if (this->getMonth() == rhs.getMonth())
+		if (this->getMonth() == temp.getMonth())
 		{
-			return this->getActor() < rhs.getActor();
+			return this->getActor() < temp.getActor();
 		}
 		else {
-			return this->getMonth() < rhs.getMonth();
+			return this->getMonth() < temp.getMonth();
 		}
 	}
 	return this->getYear() < rhs.getYear(); // Year not the same
 }
 
-Classic & Classic::operator=(const Classic &rhs)
+Classic & Classic::operator=(const Movie &rhs)
 {
+	const Classic &temp = static_cast<const Classic &>(rhs);
+
 	if (*this == rhs)
 	{
 		return *this;
@@ -82,12 +126,12 @@ Classic & Classic::operator=(const Classic &rhs)
 	this->setTitle(rhs.getTitle());
 	this->setDirector(rhs.getDirector());
 	this->setYear(rhs.getYear());
-	this->setMonth(rhs.getMonth());
+	this->setMonth(temp.getMonth());
 	 
 	// Copy actors
-	for (int i = rhs.actors.size() -1; i >= 0; i--)
+	for (int i = 0; i < actors.size(); i++)
 	{
-		actors.push_back(rhs.actors[i]);
+		actors.push_back(temp.actors[i]);
 	}
 
 	return *this;

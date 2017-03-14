@@ -9,10 +9,13 @@ class Drama: public Movie
 {
 public:
 	Drama(string title, string director, int year);
+	Drama(string title, string director);
 	~Drama();
 
-	virtual bool operator>(const Drama &rhs) const;
-	virtual bool operator<(const Drama &rhs) const;
-	virtual Drama& operator=(const Drama &rhs); // TODO: Not needed??
+	virtual bool operator==(const Movie &rhs) const;
+	virtual bool operator!=(const Movie &rhs) const;
+	virtual bool operator>(const Movie &rhs) const;
+	virtual bool operator<(const Movie &rhs) const;
+	virtual Drama& operator=(const Movie &rhs); // TODO: Not needed??
 };
 

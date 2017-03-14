@@ -11,6 +11,17 @@ Movie::~Movie()
 {
 }
 
+string printSpaces(int num, int length)
+{
+	string spaces = "";
+	int centerAlign = (num - length) / 2;
+	for (int i = 0; i < centerAlign; i++)
+	{
+		spaces += " ";
+	}
+	return spaces;
+}
+
 int Movie::getStockCount() const
 {
 	return totalStock;
@@ -43,6 +54,7 @@ void Movie::subtractStock(int num)
 		cerr << "[MOVIE ERROR] Number subtracted is greater than stock count." << endl;
 		return;
 	}
+	totalStock -= num;
 }
 
 void Movie::setDirector(string name)
@@ -63,8 +75,8 @@ void Movie::setYear(int year)
 bool Movie::operator==(const Movie &rhs) const
 {
 	return this->getTitle() == rhs.getTitle() &&
-		this->getYear() == rhs.getYear() &&
-		this->getDirector() == rhs.getDirector();
+		   this->getYear() == rhs.getYear() &&
+		   this->getDirector() == rhs.getDirector();
 }
 
 bool Movie::operator!=(const Movie &rhs) const
@@ -85,4 +97,13 @@ bool Movie::operator<(const Movie &rhs) const
 Movie & Movie::operator=(const Movie &rhs)
 {
 	return *this;
+}
+
+ostream &operator<<(ostream &os, const Movie *movie)
+{
+	os << printSpaces(35, movie->getTitle().length()) << movie->getTitle() << printSpaces(42, movie->getTitle().length()) << "|"
+		<< printSpaces(34, movie->getDirector().length()) << movie->getDirector() << printSpaces(35, movie->getDirector().length()) << "|"
+		<< printSpaces(15, 4) << movie->getYear() << printSpaces(15, 4) << "|"
+		<< printSpaces(8, 2) << movie->getStockCount() << printSpaces(7, 2);
+	return os;
 }

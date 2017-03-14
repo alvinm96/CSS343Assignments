@@ -10,6 +10,7 @@ using namespace std;
 
 class Movie
 {
+	friend ostream& operator<<(ostream &os, const Movie *movie);
 public:
 	virtual ~Movie();
 
@@ -35,9 +36,7 @@ private:
 	string director;
 	string title;
 	int year;
-
 protected:
 	Movie(); 	// Protected so it cannot be used
-
 };
 

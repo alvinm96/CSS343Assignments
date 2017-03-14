@@ -18,14 +18,18 @@ public:
 	~Classic();
 	
 	int getMonth() const; // Get the month movie was released
-	string getActor() const;
+	string getActor() const; // Gets the first element
+	const vector<string> getActors() const;
+	bool containsActor(string name) const; // Sees if actor is in movie
 
 	void addActor(string name); // Add actor to vector of major actors
 	void setMonth(int month); // Set the month
-
-	virtual bool operator>(const Classic &rhs) const;
-	virtual bool operator<(const Classic &rhs) const;
-	virtual Classic& operator=(const Classic &rhs);
+	
+	virtual bool operator==(const Movie &rhs) const;
+	virtual bool operator!=(const Movie &rhs) const;
+	virtual bool operator>(const Movie &rhs) const;
+	virtual bool operator<(const Movie &rhs) const;
+	virtual Classic& operator=(const Movie &rhs);
 private:
 	vector<string> actors;
 	int month;
